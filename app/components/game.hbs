@@ -1,8 +1,14 @@
+It's your turn {{this.activePlayerToken}}
+
 <table>
-  {{#each @board as |row|}}
+  {{#each this.board as |row x|}}
     <tr>
-      {{#each row as |block|}}
-        <td>{{block}}</td>
+      {{#each row as |value y|}}
+        <td>
+          <button {{on "click" (fn this.enterMove x y)}}>
+            [ {{value}} ]
+          </button>
+        </td>
       {{/each}}
     </tr>
   {{/each}}

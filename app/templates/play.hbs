@@ -1,2 +1,6 @@
-<h1>Play a game</h1>
-<Game />
+<h1>Game {{this.gameNumber}}</h1>
+
+<Game
+  @players={{this.players}}
+  @onGameOver={{this.onGameOver}}
+/>

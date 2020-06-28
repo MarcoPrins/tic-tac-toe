@@ -13,7 +13,7 @@ const flipBoard = (board) => {
 };
 
 export default class GameComponent extends Component {
-  @tracked activePlayer = 0;
+  @tracked moves = 0;
   @tracked board = [
     [null, null, null],
     [null, null, null],
@@ -21,41 +21,31 @@ export default class GameComponent extends Component {
   ];
 
   @action
-  enterMove(row, column) {
-    if (this.board[row][column] === null) {
-      this.registerMove(row, column);
-    }
-    else {
-      alert('This block is occupied');
-    }
-  }
-
-  registerMove(row, column) {
-    this.updateBoard(row, column);
-    this.checkForGameEnd();
-    this.toggleActivePlayer();
-  }
-
-  // Null for draw
-  registerVictory(token) {
-    token !== null ?
-      alert(`Player ${token} has won!`) :
-      alert("It's a draw. Play again");
-  }
-
-  updateBoard(row, column) {
-    const newBoard = this.board.map(arr => arr.slice());
-    newBoard[row][column] = this.activePlayerToken;
+  updateBoard(newBoard) {
     this.board = newBoard;
+    this.checkForGameEnd();
+    this.incrementMoves();
   }
 
-  toggleActivePlayer() {
-    this.activePlayer = (this.activePlayer + 1) % playerTokens.length;
+  gameOver(winnerToken) {
+    winnerToken !== null ?
+      alert(`Player ${winnerToken} has won!`) :
+      alert("It's a draw! Play again!");
+    this.args.refresh();
+  }
+
+  incrementMoves() {
+    this.moves = this.moves + 1;
   }
 
   checkForGameEnd() {
     const token = this.activePlayerToken;
-    if (this.didWin(token)) { this.registerVictory(token) }
+    if (this.didWin(token)) this.gameOver(token);
+    if (this.didDraw(token)) this.gameOver(null);
+  }
+
+  didDraw() {
+    return this.moves === 8;
   }
 
   didWin(token) {
@@ -79,6 +69,6 @@ export default class GameComponent extends Component {
   }
 
   get activePlayerToken() {
-    return playerTokens[this.activePlayer];
+    return playerTokens[this.moves % playerTokens.length];
   }
 }

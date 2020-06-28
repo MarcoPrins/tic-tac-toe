@@ -3,15 +3,9 @@
     It's your turn {{this.activePlayerToken}}
   </div>
 
-  <div class="board">
-    {{#each this.board as |row x|}}
-      <div class="board-row">
-        {{#each row as |value y|}}
-          <div class="board-block" {{on "click" (fn this.enterMove x y)}}>
-            {{value}}
-          </div>
-        {{/each}}
-      </div>
-    {{/each}}
-  </div>
+  <Board
+    @board={{this.board}}
+    @updateBoard={{this.updateBoard}}
+    @activePlayerToken={{this.activePlayerToken}}
+  />
 </div>

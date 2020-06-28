@@ -2,14 +2,6 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-const flipBoard = (board) => {
-  let reversedBoard = board.map(arr => arr.slice()).reverse();
-
-  return reversedBoard[0].map((column, index) => (
-    reversedBoard.map(row => row[index])
-  ))
-};
-
 export default class BoardComponent extends Component {
   @action
   attemptMove(row, column) {

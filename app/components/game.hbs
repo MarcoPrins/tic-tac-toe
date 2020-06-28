@@ -1,15 +1,17 @@
-It's your turn {{this.activePlayerToken}}
+<div class="component-game">
+  <div class="player-info">
+    It's your turn {{this.activePlayerToken}}
+  </div>
 
-<table>
-  {{#each this.board as |row x|}}
-    <tr>
-      {{#each row as |value y|}}
-        <td>
-          <button {{on "click" (fn this.enterMove x y)}}>
-            [ {{value}} ]
-          </button>
-        </td>
-      {{/each}}
-    </tr>
-  {{/each}}
-</table>
+  <div class="board">
+    {{#each this.board as |row x|}}
+      <div class="board-row">
+        {{#each row as |value y|}}
+          <div class="board-col" {{on "click" (fn this.enterMove x y)}}>
+            {{value}}
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
+</div>

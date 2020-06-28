@@ -2,55 +2,54 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-const playerTokens = ["x", "o"];
-
-const flipBoard = (board) => {
-  let reversedBoard = board.map(arr => arr.slice()).reverse();
-
-  return reversedBoard[0].map((column, index) => (
-    reversedBoard.map(row => row[index])
-  ))
-};
+const players = ["x", "o"];
+const initialMoves = 0;
+const initialBoard = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null],
+];
 
 export default class GameComponent extends Component {
-  @tracked moves = 0;
-  @tracked board = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-  ];
+  @tracked moves = initialMoves;
+  @tracked board = initialBoard;
+
+  init() {
+    console.log('hello');
+  }
 
   @action
   updateBoard(newBoard) {
     this.board = newBoard;
-    this.checkForGameEnd();
+    this.detectGameOver();
     this.incrementMoves();
   }
 
-  gameOver(winnerToken) {
-    winnerToken !== null ?
-      alert(`Player ${winnerToken} has won!`) :
+  // Pass null for draw
+  gameOver(winner) {
+    winner !== null ?
+      alert(`Player ${winner} has won!`) :
       alert("It's a draw! Play again!");
-    this.args.refresh();
   }
 
   incrementMoves() {
     this.moves = this.moves + 1;
   }
 
-  checkForGameEnd() {
+  detectGameOver() {
     const token = this.activePlayerToken;
-    if (this.didWin(token)) this.gameOver(token);
-    if (this.didDraw(token)) this.gameOver(null);
+    if (this.detectVictory(token)) this.gameOver(token);
+    if (this.detectDraw(token)) this.gameOver(null);
   }
 
-  didDraw() {
+  detectDraw() {
     return this.moves === 8;
   }
 
-  didWin(token) {
+  // We only detect victory for the player who just made a move
+  detectVictory(token) {
     const board = this.board;
-    const rotatedBoard = flipBoard(this.board);
+    const rotatedBoard = this.flipBoard(this.board);
 
     const horizontal =   this.detectHorizontalRows(board, token);
     const diagonalUp =   this.detectDiagonalRow(board, token);
@@ -68,7 +67,15 @@ export default class GameComponent extends Component {
     return [board[0][0], board[1][1], board[2][2]].every(entry => entry === token);
   }
 
+  flipBoard(board) {
+    let reversedBoard = board.map(arr => arr.slice()).reverse();
+
+    return reversedBoard[0].map((column, index) => (
+      reversedBoard.map(row => row[index])
+    ))
+  }
+
   get activePlayerToken() {
-    return playerTokens[this.moves % playerTokens.length];
+    return players[this.moves % players.length];
   }
 }

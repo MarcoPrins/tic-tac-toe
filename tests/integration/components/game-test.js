@@ -8,10 +8,10 @@ module('Integration | Component | game', function(hooks) {
 
   test('it shows whose turn it is', async function(assert) {
     await render(hbs`<Game />`);
-    assert.equal(this.element.querySelector('div.player-info').textContent.trim(), "It's your turn x");
+    assert.equal(this.element.querySelector('div.player-info').textContent.trim(), "It's your turn, x");
 
     await click('.board-block')
-    assert.equal(this.element.querySelector('div.player-info').textContent.trim(), "It's your turn o");
+    assert.equal(this.element.querySelector('div.player-info').textContent.trim(), "It's your turn, o");
   });
 
   test('it fills the correct blocks', async function(assert) {

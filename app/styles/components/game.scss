@@ -1,35 +1,5 @@
 .component-game {
-  .board {
-    .board-row {
-      &:first-of-type .board-block {
-        border-top: none;
-      }
-      &:last-of-type .board-block {
-        border-bottom: none;
-      }
-
-      .board-block {
-        &:first-of-type {
-          border-left: none;
-        }
-        &:last-of-type {
-          border-right: none;
-        }
-
-        display: inline-block;
-        vertical-align: top;
-        width: $block-size;
-        height: $block-size;
-        margin: 0;
-        margin-right: -4px;
-
-        border: $input-border;
-        cursor: pointer;
-
-        text-align: center;
-        line-height: $block-size;
-        font-size: $block-size / 3;
-      }
-    }
+  .player-info {
+    margin-bottom: 30px;
   }
 }

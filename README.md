@@ -33,6 +33,7 @@ My overall opinion is that I would definitely use Ember.js
 
 ### Features & issues I didn't get to
 * Persisted game progress & scores when you refresh. I was looking at [`ember-local-storage`](https://github.com/funkensturm/ember-local-storage) for this.
+* Something I would have liked to do is extract the victory checking to a separate utility class. I haven't found a clean Ember way to do this yet.
 * Making the last token show up when the game ends.
 * Adding tests for each victory condition.
 * Debugging an async issue in my play controller test.

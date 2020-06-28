@@ -20,6 +20,16 @@ module('Unit | Controller | play', function(hooks) {
     controller.send('onGameOver', null);
   });
 
+  test('renders the correct scores and updates them when onGameOver is called', function(assert) {
+    let controller = this.owner.lookup('controller:play');
+    assert.deepEqual(controller.scores, {x: 0, o: 0});
+
+
+    // TODO: Debug
+    // controller.send('onGameOver', 'x');
+    // assert.deepEqual(controller.scores, {x: 1, o: 0});
+  });
+
   test('it increments the game number when onGameOver is called', function(assert) {
     let controller = this.owner.lookup('controller:play');
     assert.equal(controller.gameNumber, 1);

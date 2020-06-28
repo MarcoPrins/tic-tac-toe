@@ -28,3 +28,9 @@ For all the negatives listed, of course I have only been using Ember Octane for 
 * A simple board component which handles the input and rendering for the game board. It could be reused for other games.
 * A very simple scores component that displays scores.
 * The `play` controller that keeps track of scores and handles victories/draws. It will also variate which player goes first for each game. This could also have been a component but I assume that the usual approach would be to create a controller and if you need to duplicate some parts on a different page then this can be extracted to a component.
+
+### Features & issues I didn't get to
+* Persisted game progress & scores when you refresh. I was looking at [`ember-local-storage`](https://github.com/funkensturm/ember-local-storage) for this.
+* Making the last token show up when the game ends.
+* Adding tests for each victory condition.
+* Debugging an async issue in my play controller test.

@@ -47,15 +47,13 @@ export default class GameComponent extends Component {
 
   // We only detect victory for the player who just made a move
   detectVictory(token) {
-    const board = this.board;
+    const curentBoard = this.board;
     const rotatedBoard = this.rotatedBoard(this.board);
 
-    const horizontal =   this.detectHorizontalRows(board, token);
-    const diagonalUp =   this.detectDiagonalRow(board, token);
-    const vertical =     this.detectHorizontalRows(rotatedBoard, token);
-    const diagonalDown = this.detectDiagonalRow(rotatedBoard, token);
-
-    return (horizontal || vertical || diagonalUp || diagonalDown);
+    return [curentBoard, rotatedBoard].some((board) => {
+      return this.detectHorizontalRows(board, token) ||
+             this.detectDiagonalRow(board, token);
+    })
   }
 
   detectHorizontalRows(board, token) {
@@ -68,7 +66,6 @@ export default class GameComponent extends Component {
 
   rotatedBoard(board) {
     let reversedBoard = board.map(arr => arr.slice()).reverse();
-
     return reversedBoard[0].map((column, index) => (
       reversedBoard.map(row => row[index])
     ))

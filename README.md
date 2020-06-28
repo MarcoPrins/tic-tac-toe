@@ -11,6 +11,7 @@ I enjoyed my experience building this small game in Ember.js! I think the winnin
 * I've always been a fan of the mvc pattern.
 * I like glimmer components much better than react components. They are cleaner and easier to change. Much less boilerplate code. Also, I know it's unfair to compare a full framework with a library but I like Ember.js better than any React.js implementation I've seen.
 * Something I've noticed: It seems that the only component tests (at least, the only ones that are encouraged by default) are "integration" tests - Meaning you test the component as a whole and omit unit tests for the methods? I'm not sure if I like testing all the edge cases with full html rendering.
+* Also, testing a component this way will mean that you are testing all its child components, which means if you modify a deeply nested component you might have lots of failing tests. Is stubbing child components a thing?
 * I didn't notice a way to define a central list of arguments for a component
 * One possible area for ambiguity could be when to use a controller vs. a component.
 

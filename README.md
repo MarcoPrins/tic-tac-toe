@@ -17,6 +17,8 @@ I enjoyed my experience building this small game in Ember.js! I think the winnin
 
 For all the negatives listed, of course I have only been using Ember Octane for one weekend so it's likely there are some solutions that I haven't come across yet.
 
+My overall opinion is that I would definitely use Ember.js
+
 ### Some remarks around material design
 * It seems that there are a lot of different ways to approach how you use material design, which I don't like.
 * I couldn't determine a de facto way of using material design styling with Ember.js. I considered using the [ember paper](https://github.com/miguelcobain/ember-paper) addon but it didn't seem to be in a stable state and since I only want the css, I decided it's not worth it. Using a cdn link would mean I can't use scss variables.

@@ -15,7 +15,6 @@ export default class GameComponent extends Component {
 
   @action
   updateBoard(newBoard) {
-    console.log('whoopie');
     this.board = newBoard;
     if (!this.detectGameOver()) this.incrementMoves();
   }

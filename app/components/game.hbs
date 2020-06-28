@@ -7,7 +7,7 @@
     {{#each this.board as |row x|}}
       <div class="board-row">
         {{#each row as |value y|}}
-          <div class="board-col" {{on "click" (fn this.enterMove x y)}}>
+          <div class="board-block" {{on "click" (fn this.enterMove x y)}}>
             {{value}}
           </div>
         {{/each}}

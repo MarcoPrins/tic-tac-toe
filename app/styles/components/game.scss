@@ -1,14 +1,14 @@
 .component-game {
   .board {
     .board-row {
-      &:first-of-type .board-col {
+      &:first-of-type .board-block {
         border-top: none;
       }
-      &:last-of-type .board-col {
+      &:last-of-type .board-block {
         border-bottom: none;
       }
 
-      .board-col {
+      .board-block {
         &:first-of-type {
           border-left: none;
         }

@@ -15,12 +15,17 @@ export default class GameComponent extends Component {
   @action
   enterMove(row, column) {
     if (this.board[row][column] === null) {
-      this.updateBoard(row, column);
-      this.toggleActivePlayer();
+      this.registerMove(row, column);
     }
     else {
-      alert('This block is occupied')
+      alert('This block is occupied');
     }
+  }
+
+  registerMove(row, column) {
+    this.updateBoard(row, column);
+    this.checkVictoryCondition();
+    this.toggleActivePlayer();
   }
 
   updateBoard(row, column) {
@@ -31,6 +36,10 @@ export default class GameComponent extends Component {
 
   toggleActivePlayer() {
     this.activePlayer = (this.activePlayer + 1) % playerTokens.length;
+  }
+
+  checkVictoryCondition() {
+    // TODO
   }
 
   get activePlayerToken() {

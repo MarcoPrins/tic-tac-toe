@@ -9,13 +9,17 @@ export default class PlayController extends Controller {
 
   @action
   onGameOver(winner) {
-    winner !== null ?
-      alert(`Player ${winner} has won!`) :
-      alert("It's a draw! Play again!");
+    this.announceResult(winner);
 
     this.updateScore(winner);
     this.gameNumber++;
     this.players = this.players.reverse();
+  }
+
+  announceResult(winner) {
+    winner !== null ?
+      alert(`Player ${winner} has won!`) :
+      alert("It's a draw! Play again!");
   }
 
   updateScore(winner) {

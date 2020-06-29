@@ -1,0 +1,11 @@
+<div class="component-game">
+  <div class="player-info">
+    It's your turn, {{this.activePlayerToken}}
+  </div>
+
+  <Board
+    @board={{this.board}}
+    @updateBoard={{this.updateBoard}}
+    @activePlayerToken={{this.activePlayerToken}}
+  />
+</div>

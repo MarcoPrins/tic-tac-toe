@@ -1,0 +1,11 @@
+<div class="component-board">
+  {{#each this.args.board as |row x|}}
+    <div class="board-row">
+      {{#each row as |value y|}}
+        <div class="board-block" {{on "click" (fn this.attemptMove x y)}}>
+          {{value}}
+        </div>
+      {{/each}}
+    </div>
+  {{/each}}
+</div>

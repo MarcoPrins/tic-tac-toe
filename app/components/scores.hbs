@@ -1,0 +1,9 @@
+<div class="component-scores">
+  <h5>Scores</h5>
+
+  {{#each-in @scores as |player score|}}
+    <div class="score">
+      <strong>Player {{player}}:</strong> {{score}}
+    </div>
+  {{/each-in}}
+</div>
